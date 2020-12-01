@@ -15,6 +15,27 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         /* General */
+        /* Permissions */
+        Permission::create([
+            'name' => 'add_permission',
+            'title' => 'Add permission',
+            'description' => 'Allows this Role to add permission',
+        ]);
+        Permission::create([
+            'name' => 'assign_permission',
+            'title' => 'Assign Permission',
+            'description' => 'Allows this Role to assign permission',
+        ]);
+        Permission::create([
+            'name' => 'modify_permission',
+            'title' => 'Modify Permission',
+            'description' => 'Allows this Role to modify permission',
+        ]);
+        Permission::create([
+            'name' => 'delete_permission',
+            'title' => 'Delete Permission',
+            'description' => 'Allows this Role to delete permission',
+        ]);
 
         /* Pages */
         Permission::create([
@@ -84,90 +105,6 @@ class PermissionSeeder extends Seeder
             'description' => 'Allows this Role to delete tag',
         ]);
 
-        /* USER */
-        /* Superuser */
-        Permission::create([
-            'name' => 'add_superuser',
-            'title' => 'Add superuser',
-            'description' => 'Allows this Role to add superuser',
-        ]);
-        Permission::create([
-            'name' => 'modify_superuser',
-            'title' => 'Modify superuser',
-            'description' => 'Allows this Role to modify superuser',
-        ]);
-        Permission::create([
-            'name' => 'delete_superuser',
-            'title' => 'Remove superuser',
-            'description' => 'Allows this Role to delete superuser',
-        ]);
 
-        /* Admin */
-        Permission::create([
-            'name' => 'add_admin',
-            'title' => 'Add admin',
-            'description' => 'Allows this Role to add admin',
-        ]);
-        Permission::create([
-            'name' => 'modify_admin',
-            'title' => 'Modify admin',
-            'description' => 'Allows this Role to modify admin',
-        ]);
-        Permission::create([
-            'name' => 'delete_admin',
-            'title' => 'Remove admin',
-            'description' => 'Allows this Role to delete admin',
-        ]);
-
-        /* Moderator */
-        Permission::create([
-            'name' => 'add_moderator',
-            'title' => 'Add Moderator',
-            'description' => 'Allows this Role to add Moderator',
-        ]);
-        Permission::create([
-            'name' => 'modify_moderator',
-            'title' => 'Modify Moderator',
-            'description' => 'Allows this Role to Modify Moderator',
-        ]);
-        Permission::create([
-            'name' => 'delete_moderator',
-            'title' => 'Remove Moderator',
-            'description' => 'Allows this Role to Remove Moderator',
-        ]);
-
-        /* Author */
-        Permission::create([
-            'name' => 'add_author',
-            'title' => 'Add Author',
-            'description' => 'Allows this Role to add Author',
-        ]);
-        Permission::create([
-            'name' => 'modify_author',
-            'title' => 'Modify Author',
-            'description' => 'Allows this Role to Modify Author',
-        ]);
-        Permission::create([
-            'name' => 'delete_author',
-            'title' => 'Remove Author',
-            'description' => 'Allows this Role to Remove Author',
-        ]);
-
-        /* User */
-        Permission::create([
-            'name' => 'add_user',
-            'title' => 'Add User',
-            'description' => 'Allows this Role to add User',
-        ]);
-        Permission::create([
-            'name' => 'modify_user',
-            'title' => 'Modify User',
-            'description' => 'Allows this Role to Modify User',
-        ]);
-        Permission::create([
-            'name' => 'delete_user',
-            'title' => 'Remove User',
-            'description' => 'Allows this Role to Remove User',
-        ]);
     }
 }
