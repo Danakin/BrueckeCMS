@@ -25,10 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
-    Route::group(['as' => 'users.', 'prefix' => 'users'], function() {
-        Route::get('/', [AdminUserController::class, 'index'])->name('index');
-    });
-    Route::group(['as' => 'roles.', 'prefix' => 'roles'], function() {
-        Route::get('/', [AdminRoleController::class, 'index'])->name('index');
-    });
+    Route::resource('/users', AdminUserController::class);
+    Route::resource('/roles', AdminRoleController::class);
 });

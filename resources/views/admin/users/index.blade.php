@@ -1,3 +1,6 @@
+@extends('admin.layouts.app')
+
+@section('content')
 <ul>
     @foreach($users as $user)
     <li>
@@ -10,3 +13,5 @@
     </li>
     @endforeach
 </ul>
+
+@endsection
