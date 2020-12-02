@@ -1,4 +1,4 @@
-<div class="fixed top-0 right-0 mt-4 mr-4 z-20">
+<div class="sm:hidden fixed top-0 right-0 mt-4 mr-4 z-20">
     <svg width="50" height="50" viewBox="0 0 100 100" id="hamburger" style="border: 1px solid black"
         @click="open = !open" :class="{'open' : open }" class="bg-white">
         <style>
