@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\RoleController as AdminRoleController;
+use App\Http\Controllers\Admin\PermissionController as AdminPermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
     Route::resource('/users', AdminUserController::class);
     Route::resource('/roles', AdminRoleController::class);
+    Route::resource('/permissions', AdminPermissionController::class);
 });

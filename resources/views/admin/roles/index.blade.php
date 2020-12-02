@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<table class="border border-separate border-green-800">
+<table class="w-full border border-separate border-green-800">
     <thead>
         <th>Name</th>
         <th>Permissions</th>
