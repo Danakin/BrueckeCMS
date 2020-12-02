@@ -19,7 +19,7 @@ class Form extends Component
         $this->name = $role->name;
         $this->permissions = $permissions;
         foreach($permissions as $permission) {
-           if($role->hasPermission($permission)) array_push($this->selected_permissions, $permission->id);
+           if($role->hasPermission($permission)) array_push($this->selected_permissions, strval($permission->id));
         }
     }
 
@@ -35,6 +35,7 @@ class Form extends Component
             'name' => ['required', 'min:4', 'unique:roles,name,'. $this->role->id],
         ]);
 
+        // dd($this->selected_permissions);
         $this->role->update($validatedData);
         $this->role->permissions()->sync($this->selected_permissions);
         session()->flash('success', 'Role ' . $this->name . ' was successfully updated');
