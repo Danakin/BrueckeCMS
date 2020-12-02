@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<section class="w-full divide-y-2 divide-gray-600">
+<section class="p-4 rounded bg-white w-full divide-y-2 divide-gray-600">
     <article class="flex flex-row flex-wrap">
         <div class="w-full sm:w-6/12 lg:w-3/12 font-bold">Name</div>
         <div class="w-full sm:w-6/12 lg:w-3/12 font-bold">Title</div>

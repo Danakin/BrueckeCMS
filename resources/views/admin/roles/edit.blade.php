@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<table class="border border-separate border-green-800">
+<section class="p-4 bg-white rounded">
     {{ $role->name }}
     <div class="flex flex-col">
         @foreach($permissions as $permission)
@@ -12,5 +12,5 @@
         </div>
         @endforeach
     </div>
-</table>
+</section>
 @endsection
