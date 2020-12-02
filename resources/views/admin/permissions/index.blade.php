@@ -1,26 +1,24 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<table class="w-full border border-separate border-green-800">
-    <thead>
-        <th>Name</th>
-        <th>Title</th>
-        <th>Description</th>
-    </thead>
-    <tbody>
-        @foreach($permissions as $permission)
-        <tr>
-            <td class="align-top border border-green-600 w-full sm:w-3/12">
-                <a href="{{ route('admin.permissions.show', $permission) }}">{{ $permission->name }}</a>
-            </td>
-            <td class="border border-green-600 w-full sm:w-3/12">
-                {{ $permission->title }}
-            </td>
-            <td class="border border-green-600 w-full sm:w-6/12">
-                {{ $permission->description }}
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+<section class="w-full divide-y-2 divide-gray-600">
+    <article class="flex flex-row flex-wrap">
+        <div class="w-full sm:w-6/12 lg:w-3/12 font-bold">Name</div>
+        <div class="w-full sm:w-6/12 lg:w-3/12 font-bold">Title</div>
+        <div class="w-full lg:w-6/12 font-bold">Description</div>
+    </article>
+    @foreach($permissions as $permission)
+    <article class="flex flex-row flex-wrap">
+        <div class="align-top w-full sm:w-6/12 lg:w-3/12 font-bold">
+            <a href="{{ route('admin.permissions.show', $permission) }}">{{ $permission->name }}</a>
+        </div>
+        <div class="w-full sm:w-6/12 lg:w-3/12">
+            {{ $permission->title }}
+        </div>
+        <div class="w-full lg:w-6/12">
+            {{ $permission->description }}
+        </div>
+    </article>
+    @endforeach
+</section>
 @endsection
