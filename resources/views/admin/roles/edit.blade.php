@@ -2,6 +2,7 @@
 
 @section('content')
 <section class="p-4 bg-white rounded">
+    <livewire:admin.roles.partials.form :role="$role" />
     {{ $role->name }}
     <div class="flex flex-col">
         @foreach($permissions as $permission)
