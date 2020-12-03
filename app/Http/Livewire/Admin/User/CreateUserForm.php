@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Admin\User;
 
 use App\Models\Role;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class CreateUserForm extends Component
@@ -29,11 +31,15 @@ class CreateUserForm extends Component
             'name' => ['required', 'min:4', 'unique:users,name'],
             'email' => ['required', 'email:rfc,dns', 'min:4', 'unique:users,email'],
             'password' => ['required', 'min:8', 'confirmed'],
-    ]);
+        ]);
 
-        $this->user->update($validatedData);
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+        ]);
         session()->flash('success', 'User ' . $this->name . ' was successfully created');
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('admin.users.index');
     }
 
     public function render()
