@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
+use App\Rules\MatchCurrentPassword;
+
 class EditPasswordForm extends Component
 {
     public $user;
@@ -19,20 +21,14 @@ class EditPasswordForm extends Component
 
     public function updated($propertyName) {
         $this->validateOnly($propertyName, [
-            'current_password' => ['required'],
+            'current_password' => ['required', new MatchCurrentPassword],
             'password' => ['required', 'min:8', 'confirmed'],
         ]);
     }
 
-    private function check_password() {
-        if(!Hash::check($this->current_password, $this->user->password)) {
-            return false;
-        }
-        return true;
-    }
-
     public function submit() {
         $validatedData = $this->validate([
+            'current_password' => ['required', new MatchCurrentPassword],
             'password' => ['required', 'min:8', 'confirmed'],
         ]);
 
