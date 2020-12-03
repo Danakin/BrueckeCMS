@@ -37,5 +37,21 @@
                 </li>
             </ul>
         </section>
+        <section class="divide-y-2 divide-gray-400">
+            <h2 class="font-bold text-xl">Posts & Content</h2>
+            <ul flex flex-col my-2>
+                <li>
+                    <a href="{{ route('admin.posttypes.index') }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        Show Types
+                    </a>
+                </li>
+                <li>New Type</li>
+            </ul>
+            @foreach (App\Models\PostType::all() as $type)
+            <ul class="flex flex-col my-2">
+                <li class="font-bold">{{ $type->name }}</li>
+            </ul>
+            @endforeach
+        </section>
     </nav>
 </div>

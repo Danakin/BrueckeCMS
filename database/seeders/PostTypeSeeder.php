@@ -14,8 +14,8 @@ class PostTypeSeeder extends Seeder
      */
     public function run()
     {
-        PostType::create(['name' => 'Post', 'prefix' => 'blog']);
-        PostType::create(['name' => 'Page']);
-        PostType::create(['name' => 'Image', 'prefix' => 'image']);
+        PostType::create(['name' => 'Post', 'prefix' => 'blog', 'description' => 'Display the Posts']);
+        PostType::create(['name' => 'Page', 'description' => 'Display the Pages']);
+        PostType::create(['name' => 'Image', 'prefix' => 'image', 'description' => 'Display the Images']);
     }
 }

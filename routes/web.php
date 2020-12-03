@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\RoleController as AdminRoleController;
 use App\Http\Controllers\Admin\PermissionController as AdminPermissionController;
+use App\Http\Controllers\Admin\PostTypeController as AdminPostTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,5 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
     Route::resource('/users', AdminUserController::class);
     Route::resource('/roles', AdminRoleController::class);
     Route::resource('/permissions', AdminPermissionController::class);
+    Route::resource('/posttypes', AdminPostTypeController::class);
 });
