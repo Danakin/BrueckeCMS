@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Roles\Partials;
+namespace App\Http\Livewire\Admin\Role;
 
 use App\Models\Role;
 use Livewire\Component;
 
-use function PHPSTORM_META\type;
-
-class Form extends Component
+class EditRoleForm extends Component
 {
     public $role;
     public $permissions;
@@ -44,6 +42,6 @@ class Form extends Component
 
     public function render()
     {
-        return view('livewire.admin.roles.partials.form');
+        return view('livewire.admin.role.edit-role-form');
     }
 }
