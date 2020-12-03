@@ -52,6 +52,11 @@
             @foreach (App\Models\PostType::orderBy('name')->get() as $type)
             <ul class="flex flex-col my-2">
                 <li class="font-bold">{{ $type->name }}</li>
+                <li>
+                    <a href="{{ route('admin.posts.index', $type) }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        Show
+                    </a>
+                </li>
             </ul>
             @endforeach
         </section>
