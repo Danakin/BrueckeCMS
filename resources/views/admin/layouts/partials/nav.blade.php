@@ -57,6 +57,11 @@
                         Show
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.posts.create', $type) }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        New
+                    </a>
+                </li>
             </ul>
             @endforeach
         </section>

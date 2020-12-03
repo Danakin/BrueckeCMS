@@ -10,13 +10,13 @@
     @foreach($posts as $post)
     <article class="flex flex-row flex-wrap my-2">
         <div class="w-full sm:w-3/12 font-bold">
-            <a href="{{ route('admin.posts.edit', [$posttype, $post]) }}">{{ $post->title }}</a>
+            <a href="{{ route('admin.posts.edit', $post) }}">{{ $post->title }}</a>
         </div>
         <div class="w-full sm:w-3/12">
-            <a href="{{ route('admin.posts.edit', [$posttype, $post]) }}">{{ $post->uri }}</a>
+            <a href="{{ route('admin.posts.edit', $post) }}">{{ $post->uri }}</a>
         </div>
         <div class="w-full sm:w-6/12">
-            <a href="{{ route('admin.posts.edit', [$posttype, $post]) }}">{{ $post->excerpt }}</a>
+            <a href="{{ route('admin.posts.edit', $post) }}">{{ $post->excerpt }}</a>
         </div>
     </article>
     @endforeach

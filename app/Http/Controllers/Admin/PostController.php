@@ -25,9 +25,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(PostType $posttype)
     {
-        //
+        $posttypes = PostType::all();
+        return view('admin.posts.create', compact('posttypes', 'posttype'));
     }
 
     /**
@@ -60,7 +61,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $posttypes = PostType::all();
+        return view('admin.posts.edit', compact('posttypes', 'post'));
     }
 
     /**
@@ -83,6 +85,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index', $post->type)->with('success', 'Post ' . $post->title . ' deleted successfully.');
     }
 }

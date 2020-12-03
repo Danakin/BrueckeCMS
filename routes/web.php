@@ -32,5 +32,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
     Route::resource('/roles', AdminRoleController::class);
     Route::resource('/permissions', AdminPermissionController::class);
     Route::resource('/posttypes', AdminPostTypeController::class);
-    Route::resource('/{posttype:name}/posts', AdminPostController::class);
+    Route::get('/posts/{posttype:name}', [AdminPostController::class, 'index'])->name('posts.index');
+    Route::get('/posts/{posttype:name}/create', [AdminPostController::class, 'create'])->name('posts.create');
+    Route::resource('/posts', AdminPostController::class)->except('index', 'create');
 });
