@@ -20,6 +20,6 @@ class Post extends Model
     ];
 
     public function type() {
-        return $this->hasOne(PostType::class);
+        return $this->belongsTo(PostType::class, 'post_type_id');
     }
 }
