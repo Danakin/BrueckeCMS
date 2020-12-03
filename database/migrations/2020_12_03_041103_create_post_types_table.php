@@ -17,7 +17,7 @@ class CreatePostTypesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description')->nullable();
-            $table->string('prefix')->nullable()->unique();
+            $table->string('prefix')->unique();
             $table->timestamps();
         });
     }

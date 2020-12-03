@@ -15,8 +15,8 @@ class PostTypeController extends Controller
      */
     public function index()
     {
-        $post_types = PostType::all();
-        return view('admin.post-types.index', compact('post_types'));
+        $posttypes = PostType::all();
+        return view('admin.post-types.index', compact('posttypes'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PostTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.post-types.create');
     }
 
     /**
@@ -43,10 +43,10 @@ class PostTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PostType  $postType
+     * @param  \App\Models\PostType  $posttype
      * @return \Illuminate\Http\Response
      */
-    public function show(PostType $postType)
+    public function show(PostType $posttype)
     {
         //
     }
@@ -54,22 +54,22 @@ class PostTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PostType  $postType
+     * @param  \App\Models\PostType  $posttype
      * @return \Illuminate\Http\Response
      */
-    public function edit(PostType $postType)
+    public function edit(PostType $posttype)
     {
-        //
+        return view('admin.post-types.edit', compact('posttype'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PostType  $postType
+     * @param  \App\Models\PostType  $posttype
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PostType $postType)
+    public function update(Request $request, PostType $posttype)
     {
         //
     }
@@ -77,11 +77,13 @@ class PostTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PostType  $postType
+     * @param  \App\Models\PostType  $posttype
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PostType $postType)
+    public function destroy(PostType $posttype)
     {
-        //
+        $name = $posttype->name;
+        $posttype->delete();
+        return redirect()->route('admin.posttypes.index')->with('success', 'PostType ' . $name . ' successfully deleted.');
     }
 }

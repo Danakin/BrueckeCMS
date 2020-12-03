@@ -1,12 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<section class="w-full p-4 rounded bg-white">
-    <h1 class="font-bold text-xl">Create New User</h1>
+<section class="p-4 bg-white rounded">
+    <h1 class="text-xl mb-4">Create PostType</h1>
+    <livewire:admin.post-type.create-post-type-form />
 </section>
-<section class="w-full p-4 rounded bg-white my-2">
-    <livewire:admin.user.create-user-form :roles="$roles" />
-</section>
-
-TODO: User Meta Data!
 @endsection

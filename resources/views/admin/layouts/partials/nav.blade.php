@@ -42,12 +42,14 @@
             <ul flex flex-col my-2>
                 <li>
                     <a href="{{ route('admin.posttypes.index') }}" class="pl-4 hover:bg-gray-400 w-full block">
-                        Show Types
+                        Show
                     </a>
                 </li>
-                <li>New Type</li>
+                <li><a href="{{ route('admin.posttypes.create') }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        New
+                    </a></li>
             </ul>
-            @foreach (App\Models\PostType::all() as $type)
+            @foreach (App\Models\PostType::orderBy('name')->get() as $type)
             <ul class="flex flex-col my-2">
                 <li class="font-bold">{{ $type->name }}</li>
             </ul>
