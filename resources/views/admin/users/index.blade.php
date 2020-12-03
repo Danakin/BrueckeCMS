@@ -22,6 +22,5 @@
         </div>
     </article>
     @endforeach
-    </>
 </section>
 @endsection

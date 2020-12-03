@@ -9,17 +9,19 @@ class Text extends Component
     public $name;
     public $value;
     public $model;
+    public $type;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name = "", $value = "", $model = "")
+    public function __construct($name = "", $value = "", $model = "", $type = "text")
     {
         $this->name = $name;
         $this->value = $value;
         $this->model = $model;
+        $this->type = $type;
     }
 
     /**
