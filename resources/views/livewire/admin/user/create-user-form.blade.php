@@ -18,5 +18,13 @@
     <x-input.text type="password" model="password_confirmation" name="password_confirmation">Confirm
         Password
     </x-input.text>
+    <div class="flex flex-col">
+        @foreach($roles as $role)
+        <div>
+            <label for="{{ $role->id}}" class="font-bold inline-block w-36">{{ $role->name }}</label>
+            <input type="checkbox" wire:model.lazy="selected_roles" value="{{$role->id}}">
+        </div>
+        @endforeach
+    </div>
     <x-input.button class="bg-blue-300 hover:bg-blue-500 text-white">Create User</x-input.button>
 </form>

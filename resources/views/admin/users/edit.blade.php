@@ -10,6 +10,9 @@
 <section class="w-full p-4 rounded bg-white my-2">
     <livewire:admin.user.edit-password-form :user="$user" />
 </section>
+<section class="w-full p-4 rounded bg-white my-2">
+    <livewire:admin.user.edit-roles-form :user="$user" :roles="$roles" />
+</section>
 
 TODO: User Meta Data!
 @endsection

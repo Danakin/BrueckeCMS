@@ -10,6 +10,7 @@ use Livewire\Component;
 class CreateUserForm extends Component
 {
     public $roles;
+    public $selected_roles = [];
     public $name;
     public $email;
     public $password;
@@ -33,11 +34,12 @@ class CreateUserForm extends Component
             'password' => ['required', 'min:8', 'confirmed'],
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
+        $user->roles()->sync($this->selected_roles);
         session()->flash('success', 'User ' . $this->name . ' was successfully created');
         return redirect()->route('admin.users.index');
     }

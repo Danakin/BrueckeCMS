@@ -61,7 +61,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $roles = Role::orderBy('name', 'asc')->get();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
