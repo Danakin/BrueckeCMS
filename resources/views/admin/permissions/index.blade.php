@@ -10,7 +10,7 @@
     @foreach($permissions as $permission)
     <article class="flex flex-row flex-wrap">
         <div class="align-top w-full sm:w-6/12 lg:w-3/12 font-bold">
-            <a href="{{ route('admin.permissions.show', $permission) }}">{{ $permission->name }}</a>
+            <a href="{{ route('admin.permissions.edit', $permission) }}">{{ $permission->name }}</a>
         </div>
         <div class="w-full sm:w-6/12 lg:w-3/12">
             {{ $permission->title }}

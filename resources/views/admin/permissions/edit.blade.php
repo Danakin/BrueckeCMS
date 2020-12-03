@@ -1,16 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<section class="p-4 rounded bg-white">
-    {{ $role->name }}
-    <div class="flex flex-col">
-        @foreach($permissions as $permission)
-        <div>
-            <label for="{{ $permission->id}}" class="font-bold inline-block w-36">{{ $permission->name }}</label>
-            <input type="checkbox" name="{{ $permission->id}}" id="{{ $permission->id}}"
-                {{ $role->hasPermission($permission) ? 'checked' : '' }}>
-        </div>
-        @endforeach
-    </div>
+<section class="p-4 bg-white rounded">
+    <h1 class="text-xl mb-4">Edit Permission <span class="font-bold">{{ $permission->name }}</span></h1>
+    <livewire:admin.permission.edit-permission-form :permission="$permission" />
 </section>
 @endsection
