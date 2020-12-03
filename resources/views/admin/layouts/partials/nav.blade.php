@@ -1,16 +1,41 @@
 <div x-data="{ open: false }" @resize.window="open = window.innerWidth > 640 ? false : none">
     @include('admin.layouts.partials.hamburger')
-    <nav class="fixed p-4 top-0 bottom-0 bg-gray-600 text-white w-64 flex flex-col overflow-y-auto z-10 transition transform duration-200 ease-in-out sm:translate-x-0"
+    <nav class="fixed p-4 top-0 bottom-0 bg-gray-600 divide-y-2 divide-gray-100 text-white w-64 flex flex-col overflow-y-auto z-10 transition transform duration-200 ease-in-out sm:translate-x-0"
         :class="{ '-translate-x-64': !open }">
         <section>
-            <h2 class="font-bold">Admin Dashboard</h2>
+            <h2 class="font-bold text-xl">Admin Dashboard</h2>
         </section>
-        <section>
-            <h2 class="font-bold">User & Permissions</h2>
-            <article><a href="{{ route('admin.users.index') }}" class="hover:underline">Users</a></article>
-            <article><a href="{{ route('admin.roles.index') }}" class="hover:underline">Roles</a></article>
-            <article><a href="{{ route('admin.permissions.index') }}" class="hover:underline">Permissions</a>
-            </article>
+        <section class="divide-y-2 divide-gray-400">
+            <h2 class="font-bold text-xl">User & Permissions</h2>
+            <ul class="flex flex-col my-2">
+                <li class="font-bold">Users</li>
+                <li>
+                    <a href="{{ route('admin.users.index') }}" class="pl-4 hover:bg-gray-400 w-full block">Show</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.users.create') }}" class="pl-4 hover:bg-gray-400 w-full block">New</a>
+                </li>
+            </ul>
+            <ul class="flex flex-col my-2">
+                <li class="font-bold">Roles</li>
+                <li>
+                    <a href="{{ route('admin.roles.index') }}" class="pl-4 hover:bg-gray-400 w-full block">Show</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.roles.create') }}" class="pl-4 hover:bg-gray-400 w-full block">New</a>
+                </li>
+            </ul>
+            <ul class="flex flex-col my-2">
+                <li class="font-bold">Permissions</li>
+                <li>
+                    <a href="{{ route('admin.permissions.index') }}"
+                        class="pl-4 hover:bg-gray-400 w-full block">Show</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.permissions.create') }}"
+                        class="pl-4 hover:bg-gray-400 w-full block">New</a>
+                </li>
+            </ul>
         </section>
     </nav>
 </div>
