@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Post;
 
 use App\Models\Post;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class CreatePostForm extends Component
 {
@@ -20,6 +21,20 @@ class CreatePostForm extends Component
     public function mount($posttypes, $posttype) {
         $this->posttypes = $posttypes;
         $this->post_type_id = $posttype->id;
+    }
+
+    public function updated($propertyName) {
+        $this->validateOnly($propertyName, [
+            'title' => ['required', 'unique:posts,title'],
+            'uri' => ['required', 'unique:posts,title'],
+            'excerpt' => ['required'],
+            'body' => ['required'],
+            'post_type_id' => ['required', 'exists:post_types,id'],
+        ]);
+    }
+
+    public function updatedTitle($value) {
+        $this->uri = Str::slug(Str::words(Str::limit($value, 64, ''), 10, ''));
     }
 
     public function submit() {

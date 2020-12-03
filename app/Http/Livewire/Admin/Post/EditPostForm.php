@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Post;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class EditPostForm extends Component
 {
@@ -26,6 +27,10 @@ class EditPostForm extends Component
         $this->post_type_id = $post->post_type_id;
         $this->image_id = $post->image_id;
         $this->mimetype = $post->mimetype;
+    }
+
+    public function updatedTitle($value) {
+        $this->uri = Str::slug(Str::words(Str::limit($value, 64, ''), 10, ''));
     }
 
     public function submit() {
