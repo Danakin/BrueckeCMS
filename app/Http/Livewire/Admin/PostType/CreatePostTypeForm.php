@@ -28,7 +28,7 @@ class CreatePostTypeForm extends Component
 
         PostType::create([
             'name' => $this->name,
-            'prefix' => $this->prefix,
+            'prefix' => Str::start($this->prefix, '/'),
             'description' => $this->description
         ]);
 

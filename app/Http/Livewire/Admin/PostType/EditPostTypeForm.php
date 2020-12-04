@@ -38,7 +38,7 @@ class EditPostTypeForm extends Component
 
         $this->posttype->update([
             'name' => $this->name,
-            'prefix' => $this->prefix,
+            'prefix' => Str::start($this->prefix, '/'),
             'description' => $this->description,
         ]);
         session()->flash('success', 'Posttype ' . $this->name . ' was successfully updated');

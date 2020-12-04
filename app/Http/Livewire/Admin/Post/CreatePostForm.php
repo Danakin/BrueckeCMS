@@ -46,10 +46,10 @@ class CreatePostForm extends Component
             'post_type_id' => ['required', 'exists:post_types,id'],
         ]);
 
-        $post = Post::create([
+        $post = auth()->user()->posts()->create([
             'post' => $this->post,
             'title' => $this->title,
-            'uri' => $this->uri,
+            'uri' => Str::start($this->uri, '/'),
             'excerpt' => $this->excerpt,
             'body' => $this->body,
             'post_type_id' => $this->post_type_id,
