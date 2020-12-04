@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('uri')->unique();
             $table->text('excerpt');
             $table->longText('body');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('post_type_id')->constrained()->cascadeOnDelete();
             $table->unsignedInteger('image_id')->nullable();
             $table->string('mimetype')->nullable();
