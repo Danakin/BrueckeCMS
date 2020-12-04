@@ -3,7 +3,7 @@
     <nav class="fixed p-4 top-0 bottom-0 bg-gray-600 divide-y-2 divide-gray-100 text-white w-64 flex flex-col overflow-y-auto z-10 transition transform duration-200 ease-in-out sm:translate-x-0"
         :class="{ '-translate-x-64': !open }">
         <section>
-            <h2 class="font-bold text-xl">Admin Dashboard</h2>
+            <a href="{{ route('admin.index') }}" class="font-bold text-xl">Admin Dashboard</a>
         </section>
         <section class="divide-y-2 divide-gray-400">
             <h2 class="font-bold text-xl">User & Permissions</h2>
