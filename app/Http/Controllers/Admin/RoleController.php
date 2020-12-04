@@ -50,7 +50,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        if($role->id === 1) abort(404);
+        if($role->id === 1) abort(401);
         $permissions = Permission::all();
         return view('admin.roles.edit', compact('role', 'permissions'));
     }
