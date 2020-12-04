@@ -15,6 +15,12 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         /* General */
+        Permission::create([
+            'name' => 'access_admin',
+            'title' => 'Access Admin Are',
+            'description' => 'Only users with this Permission can enter admin area, what they see will be set by other permissions.'
+        ]);
+
         /* Permissions */
         Permission::create([
             'name' => 'add_permission',
@@ -37,74 +43,6 @@ class PermissionSeeder extends Seeder
             'description' => 'Allows this Role to delete permission',
         ]);
 
-        /* Pages */
-        Permission::create([
-            'name' => 'add_page',
-            'title' => 'Add page',
-            'description' => 'Allows this Role to add page',
-        ]);
-        Permission::create([
-            'name' => 'modify_page',
-            'title' => 'Modify page',
-            'description' => 'Allows this Role to modify page',
-        ]);
-        Permission::create([
-            'name' => 'delete_page',
-            'title' => 'Remove page',
-            'description' => 'Allows this Role to delete page',
-        ]);
-
-        /* Posts */
-        Permission::create([
-            'name' => 'add_post',
-            'title' => 'Add post',
-            'description' => 'Allows this Role to add post',
-        ]);
-        Permission::create([
-            'name' => 'modify_post',
-            'title' => 'Modify post',
-            'description' => 'Allows this Role to modify post',
-        ]);
-        Permission::create([
-            'name' => 'delete_post',
-            'title' => 'Remove post',
-            'description' => 'Allows this Role to delete post',
-        ]);
-
-        /* Comment */
-        Permission::create([
-            'name' => 'add_comment',
-            'title' => 'Add comment',
-            'description' => 'Allows this Role to add comment',
-        ]);
-        Permission::create([
-            'name' => 'modify_comment',
-            'title' => 'Modify comment',
-            'description' => 'Allows this Role to modify comment',
-        ]);
-        Permission::create([
-            'name' => 'delete_comment',
-            'title' => 'Remove comment',
-            'description' => 'Allows this Role to delete comment',
-        ]);
-
-        /* Tags */
-        Permission::create([
-            'name' => 'add_tag',
-            'title' => 'Add tag',
-            'description' => 'Allows this Role to add tag',
-        ]);
-        Permission::create([
-            'name' => 'modify_tag',
-            'title' => 'Modify tag',
-            'description' => 'Allows this Role to modify tag',
-        ]);
-        Permission::create([
-            'name' => 'delete_tag',
-            'title' => 'Remove tag',
-            'description' => 'Allows this Role to delete tag',
-        ]);
-
-
+        // TODO: ADD COMMENTS AND TAGS
     }
 }

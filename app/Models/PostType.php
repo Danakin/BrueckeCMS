@@ -11,7 +11,16 @@ class PostType extends Model
 
     protected $fillable = ['name', 'prefix', 'description'];
 
+    protected $dispatchesEvents = [
+        'created' => \App\Events\PostTypeCreated::class,
+        'updating' => \App\Events\PostTypeUpdating::class,
+    ];
+
     public function posts() {
         return $this->hasMany(Post::class);
+    }
+
+    public function permissions() {
+        return $this->hasMany(Permission::class);
     }
 }
