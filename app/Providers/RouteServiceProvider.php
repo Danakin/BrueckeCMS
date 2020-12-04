@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Post;
+use Illuminate\Support\Str;
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -46,6 +49,12 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            foreach (Post::all() as $post) {
+                $prefix =  Str::start($post->type->prefix, '/');
+                $uri = Str::start($post->uri, '/');
+                Route::view($prefix . $uri, 'home.post', ['post' => $post]);
+            }
         });
     }
 
