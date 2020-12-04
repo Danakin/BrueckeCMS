@@ -6,8 +6,6 @@ Headline
 
 @section('content')
 @if ($post->image_id)
-
-@endif
 <section
     class="flex flex-col justify-center items-center w-full h-96 overflow-hidden bg-cover bg-gradient-to-r from-orange-400 via-red-500 to-pink-500"
     role="img" aria-label="Image Description">
@@ -19,6 +17,7 @@ Headline
         When a hero comes along
     </button>
 </section>
+@endif
 
 {!! $post->body !!}
 @endsection
