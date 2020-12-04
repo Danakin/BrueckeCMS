@@ -16,6 +16,6 @@ class Permission extends Model
     }
 
     public function type() {
-        return $this->belongsTo(PostType::class);
+        return $this->belongsTo(PostType::class, 'post_type_id');
     }
 }

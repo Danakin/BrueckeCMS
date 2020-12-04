@@ -50,6 +50,7 @@
                     </a></li>
             </ul>
             @foreach (App\Models\PostType::orderBy('name')->get() as $type)
+            @can('view', $type)
             <ul class="flex flex-col my-2">
                 <li class="font-bold">{{ $type->name }}</li>
                 <li>
@@ -63,6 +64,7 @@
                     </a>
                 </li>
             </ul>
+            @endcan
             @endforeach
         </section>
     </nav>
