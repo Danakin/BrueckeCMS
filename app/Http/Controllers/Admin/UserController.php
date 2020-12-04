@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::orderBy('name', 'asc')->get();
+        $roles = Role::where('name', '!=', 'superuser')->orderBy('name', 'asc')->get();
         return view('admin.users.create', compact('roles'));
     }
 
@@ -61,7 +61,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::orderBy('name', 'asc')->get();
+        if($user->hasRole('superuser')) {
+            $roles = Role::orderBy('name', 'asc')->get();
+        } else {
+            $roles = Role::where('name', '!=', 'superuser')->orderBy('name', 'asc')->get();
+        }
         return view('admin.users.edit', compact('user', 'roles'));
     }
 
