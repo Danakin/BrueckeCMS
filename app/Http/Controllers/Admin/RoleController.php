@@ -16,7 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::orderBy('name', 'asc')->get();
+        $roles = Role::where('name', '!=', 'superuser')->orderBy('name', 'asc')->get();
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -50,6 +50,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        if($role->id === 1) abort(404);
         $permissions = Permission::all();
         return view('admin.roles.edit', compact('role', 'permissions'));
     }
@@ -74,6 +75,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        if($role->name === 'superuser') {
+            return redirect()->route('admin.roles.index')->withErrors(['Unauthorized action', 'Cannot delete this role.']);
+        }
         $role->delete();
         return redirect()->route('admin.roles.index');
     }
