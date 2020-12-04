@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->foreignId('post_type_id')->constrained()->cascadeOnDelete();
             $table->unsignedInteger('image_id')->nullable();
             $table->string('mimetype')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ Headline
         <h2 class="font-bold text-2xl">
             {{ $post->title }}
         </h2>
-        <p class="text-right italic">by {{ $post->user }}</p>
+        <p class="text-right italic">by {{ $post->user->name }} on {{ $post->published_at }}</p>
     </a>
 </section>
 @endforeach

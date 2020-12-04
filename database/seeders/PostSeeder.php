@@ -27,6 +27,14 @@ class PostSeeder extends Seeder
             'uri' => 'example-post',
             'excerpt' => 'This is an example post',
             'body' => 'This is the featured post',
+            'published_at' => now(),
+            'post_type_id' => $type_post->id,
+        ]);
+        $user->posts()->create([
+            'title' => 'Unpublished Post',
+            'uri' => 'unpublished-post',
+            'excerpt' => 'This is an unpublished post',
+            'body' => 'This is the unpublished post',
             'post_type_id' => $type_post->id,
         ]);
         $user->posts()->create([
@@ -34,6 +42,14 @@ class PostSeeder extends Seeder
             'uri' => 'example-page',
             'excerpt' => 'This is an example post',
             'body' => 'This is the featured post',
+            'published_at' => now(),
+            'post_type_id' => $type_page->id,
+        ]);
+        $user->posts()->create([
+            'title' => 'Unpublished page',
+            'uri' => 'unpublished-page',
+            'excerpt' => 'This is an unpublished post',
+            'body' => 'This is the unpublished post',
             'post_type_id' => $type_page->id,
         ]);
         $user->posts()->create([

@@ -52,11 +52,10 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             foreach (PostType::all() as $type) {
-                $prefix =  Str::start($type->prefix, '/');
-                Route::view($prefix, 'home.index', ['posts' => $type->posts]);
+                Route::view(Str::start($type->prefix, '/'), 'home.index', ['posts' => $type->posts()->whereNotNull('published_at')->get()]);
             }
 
-            foreach (Post::all() as $post) {
+            foreach (Post::whereNotNull('published_at')->get() as $post) {
                 $prefix =  Str::start($post->type->prefix, '/');
                 $uri = Str::start($post->uri, '/');
                 Route::view($prefix . $uri, 'home.post', ['post' => $post]);
