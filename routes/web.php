@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RoleController as AdminRoleController;
 use App\Http\Controllers\Admin\PermissionController as AdminPermissionController;
 use App\Http\Controllers\Admin\PostTypeController as AdminPostTypeController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\MenuController as AdminMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
     Route::resource('/roles', AdminRoleController::class);
     Route::resource('/permissions', AdminPermissionController::class);
     Route::resource('/posttypes', AdminPostTypeController::class);
+    Route::resource('/menus', AdminMenuController::class);
     Route::get('/posts/{posttype:name}', [AdminPostController::class, 'index'])->name('posts.index');
     Route::get('/posts/{posttype:name}/create', [AdminPostController::class, 'create'])->name('posts.create');
     Route::resource('/posts', AdminPostController::class)->except('index', 'create');

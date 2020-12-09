@@ -13,9 +13,16 @@
                         Show
                     </a>
                 </li>
-                <li><a href="{{ route('admin.posttypes.create') }}" class="pl-4 hover:bg-gray-400 w-full block">
+                <li>
+                    <a href="{{ route('admin.posttypes.create') }}" class="pl-4 hover:bg-gray-400 w-full block">
                         New
-                    </a></li>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.menus.index') }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        Menus
+                    </a>
+                </li>
             </ul>
             @foreach (App\Models\PostType::orderBy('name')->get() as $type)
             @can('view', $type)
