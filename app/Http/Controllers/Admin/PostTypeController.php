@@ -59,9 +59,8 @@ class PostTypeController extends Controller
      */
     public function edit(PostType $posttype)
     {
-        dd(auth()->user()->can('update', $posttype));
-        if(auth()->user() && auth()->user()->cant('update', $posttype)) {
-            return redirect()->back()->withErrors(['Unauthorised', 'You are not alled to do this']);
+        if(auth()->user() && auth()->user()->cant('view', $posttype)) {
+            return redirect()->back()->withErrors(['Unauthorised', 'You are not allowed to do this']);
         }
         return view('admin.post-types.edit', compact('posttype'));
     }
