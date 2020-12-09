@@ -6,6 +6,36 @@
             <a href="{{ route('admin.index') }}" class="font-bold text-xl">Admin Dashboard</a>
         </section>
         <section class="divide-y-2 divide-gray-400">
+            <h2 class="font-bold text-xl">Posts & Content</h2>
+            <ul flex flex-col my-2>
+                <li>
+                    <a href="{{ route('admin.posttypes.index') }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        Show
+                    </a>
+                </li>
+                <li><a href="{{ route('admin.posttypes.create') }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        New
+                    </a></li>
+            </ul>
+            @foreach (App\Models\PostType::orderBy('name')->get() as $type)
+            @can('view', $type)
+            <ul class="flex flex-col my-2">
+                <li class="font-bold">{{ $type->name }}</li>
+                <li>
+                    <a href="{{ route('admin.posts.index', $type) }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        Show
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.posts.create', $type) }}" class="pl-4 hover:bg-gray-400 w-full block">
+                        New
+                    </a>
+                </li>
+            </ul>
+            @endcan
+            @endforeach
+        </section>
+        <section class="divide-y-2 divide-gray-400">
             <h2 class="font-bold text-xl">User & Permissions</h2>
             <ul class="flex flex-col my-2">
                 <li class="font-bold">Users</li>
@@ -36,36 +66,6 @@
                         class="pl-4 hover:bg-gray-400 w-full block">New</a>
                 </li>
             </ul>
-        </section>
-        <section class="divide-y-2 divide-gray-400">
-            <h2 class="font-bold text-xl">Posts & Content</h2>
-            <ul flex flex-col my-2>
-                <li>
-                    <a href="{{ route('admin.posttypes.index') }}" class="pl-4 hover:bg-gray-400 w-full block">
-                        Show
-                    </a>
-                </li>
-                <li><a href="{{ route('admin.posttypes.create') }}" class="pl-4 hover:bg-gray-400 w-full block">
-                        New
-                    </a></li>
-            </ul>
-            @foreach (App\Models\PostType::orderBy('name')->get() as $type)
-            @can('view', $type)
-            <ul class="flex flex-col my-2">
-                <li class="font-bold">{{ $type->name }}</li>
-                <li>
-                    <a href="{{ route('admin.posts.index', $type) }}" class="pl-4 hover:bg-gray-400 w-full block">
-                        Show
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.posts.create', $type) }}" class="pl-4 hover:bg-gray-400 w-full block">
-                        New
-                    </a>
-                </li>
-            </ul>
-            @endcan
-            @endforeach
         </section>
     </nav>
 </div>
