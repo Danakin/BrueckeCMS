@@ -80,6 +80,5 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
     }
 }
