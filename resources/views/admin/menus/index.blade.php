@@ -2,6 +2,7 @@
 
 @section('content')
 <section class="w-full p-4 rounded bg-white divide-y-2 divide-gray-600">
+    <article><a href="{{ route('admin.menus.create') }}">New Menu</a></article>
     <article class="flex flex-row flex-wrap">
         <div class="w-full sm:w-3/12 font-bold">Title</div>
         <div class="w-full sm:w-6/12 font-bold">Description</div>

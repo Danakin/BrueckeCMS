@@ -15,7 +15,7 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // Title of the page
+            $table->string('title')->unique(); // Title of the page
             $table->text('description'); // Description to display in admin panel
             $table->string('uri')->nullable();   // Logo
             $table->timestamps();
