@@ -23,4 +23,8 @@ class PostType extends Model
     public function permissions() {
         return $this->hasMany(Permission::class);
     }
+
+    public function menuitems() {
+        return $this->hasMany(MenuItem::class);
+    }
 }

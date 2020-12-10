@@ -16,11 +16,13 @@ class CreateMenuItemsTable extends Migration
         Schema::create('menu_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('menu_id')->constrained()->cascadeOnDelete();
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('menu_items')->onDelete('CASCADE');
-            $table->string('title');
-            $table->string('uri');
-            $table->integer('order');
+            $table->unsignedBigInteger('post_type_id')->nullable();
+            $table->foreign('post_type_id')->references('id')->on('post_types')->onDelete('CASCADE');
+            $table->string('title')->nullable();
+            $table->string('uri')->nullable();
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }

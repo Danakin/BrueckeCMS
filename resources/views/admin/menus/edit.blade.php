@@ -10,4 +10,9 @@
         <x-input.button class="bg-red-300 hover:bg-red-500 text-white">Delete Menu</x-input.button>
     </form>
 </section>
+
+<section class="w-full p-4 rounded bg-white mt-4">
+    <h1 class="font-bold text-xl">Items</h1>
+    <livewire:admin.menu.menu-item :menu="$menu"></livewire:admin.menu.menu-item>
+</section>
 @endsection
