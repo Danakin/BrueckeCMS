@@ -13,6 +13,6 @@
 
 <section class="w-full p-4 rounded bg-white mt-4">
     <h1 class="font-bold text-xl">Items</h1>
-    <livewire:admin.menu.menu-item :menu="$menu"></livewire:admin.menu.menu-item>
+    <livewire:admin.menu.change-menu-item :menu="$menu"></livewire:admin.menu.change-menu-item>
 </section>
 @endsection
