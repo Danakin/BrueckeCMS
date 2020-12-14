@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'access_admin'], function() {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/users', AdminUserController::class);
     Route::resource('/roles', AdminRoleController::class);

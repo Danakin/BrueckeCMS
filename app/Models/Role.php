@@ -20,6 +20,6 @@ class Role extends Model
     }
 
     public function hasPermission($permission) {
-        return null !== $this->permissions()->whereIn('name', $permission)->first();
+        return null !== $this->permissions->whereIn('name', $permission)->first();
     }
 }
