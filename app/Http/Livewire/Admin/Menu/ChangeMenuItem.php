@@ -12,6 +12,8 @@ class ChangeMenuItem extends Component
     public $items = [];
     public $menu;
     public $menu_ids;
+    public $title;
+    public $post_type_id;
 
     protected $listeners = ['menuItemChanged' => 'updateComponents'];
 
@@ -24,10 +26,11 @@ class ChangeMenuItem extends Component
         $this->posttypes = PostType::whereNotIn('id', $this->menu_ids)->get();
     }
 
-    public function addToMenu($item) {
+    public function addToMenu($title, $id) {
         MenuItem::create([
             "menu_id" => $this->menu->id,
-            "post_type_id" => $item["id"],
+            "post_type_id" => $id,
+            "title" => $title,
         ]);
         $this->emit('menuItemChanged');
     }
