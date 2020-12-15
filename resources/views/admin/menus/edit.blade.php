@@ -11,8 +11,9 @@
     </form>
 </section>
 
-<section class="w-full p-4 rounded bg-white mt-4">
+<section class="w-full p-4 rounded bg-white mt-4 relative">
     <h1 class="font-bold text-xl">Items</h1>
+    <livewire:admin.menu.new-menu-item :menu="$menu"></livewire:admin.menu.new-menu-item>
     <livewire:admin.menu.change-menu-item :menu="$menu"></livewire:admin.menu.change-menu-item>
 </section>
 @endsection
