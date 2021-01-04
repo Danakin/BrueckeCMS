@@ -15,6 +15,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
+            $permission_access_admin = Permission::where('name', 'access_admin')->first();
             $permission_add_permission = Permission::where('name', 'add_permission')->first();
             $permission_assign_permission = Permission::where('name', 'assign_permission')->first();
             $permission_modify_permission = Permission::where('name', 'modify_permission')->first();
@@ -33,6 +34,7 @@ class RoleSeeder extends Seeder
             $permission_delete_tag = Permission::where('name', 'delete_tag')->first();
 
             $role_superuser = Role::create(['name' => 'superuser']);
+            $role_superuser->permissions()->attach($permission_access_admin);
             $role_superuser->permissions()->attach($permission_add_permission);
             $role_superuser->permissions()->attach($permission_assign_permission);
             $role_superuser->permissions()->attach($permission_modify_permission);
