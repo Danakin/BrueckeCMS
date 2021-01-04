@@ -23,6 +23,8 @@ class EditPostTypeForm extends Component
 
     public function updated($propertyName) {
         $this->validateOnly($propertyName, [
+            'name' => ['required', 'unique:post_types,name,'. $this->posttype->id],
+            'prefix' => ['required', 'unique:post_types,prefix,'. $this->posttype->id],
         ]);
     }
 
@@ -30,6 +32,8 @@ class EditPostTypeForm extends Component
         $this->prefix = $this->prefix;
 
         $this->validate([
+            'name' => ['required', 'unique:post_types,name,'. $this->posttype->id],
+            'prefix' => ['required', 'unique:post_types,prefix,'. $this->posttype->id],
         ]);
 
         $this->posttype->update([

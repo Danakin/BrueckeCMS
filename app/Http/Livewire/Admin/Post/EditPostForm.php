@@ -39,6 +39,7 @@ class EditPostForm extends Component
             'uri' => ['required', 'unique:posts,title,' . $this->post->id],
             'excerpt' => ['required'],
             'body' => ['required'],
+            'post_type_id' => ['required', 'exists:post_types,id'],
         ]);
 
         $this->post->update([
