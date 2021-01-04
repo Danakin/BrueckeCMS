@@ -45,7 +45,7 @@ class EditPostForm extends Component
         $this->post->update([
             'post' => $this->post,
             'title' => $this->title,
-            'uri' => Str::start($this->uri, '/'),
+            'uri' => $this->uri,
             'excerpt' => $this->excerpt,
             'body' => $this->body,
             'post_type_id' => $this->post_type_id,

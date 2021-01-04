@@ -29,7 +29,7 @@ class EditPostTypeForm extends Component
     }
 
     public function submit() {
-        $this->prefix = Str::start($this->prefix, '/');
+        $this->prefix = $this->prefix;
 
         $this->validate([
             'name' => ['required', 'unique:post_types,name,'. $this->posttype->id],
@@ -38,7 +38,7 @@ class EditPostTypeForm extends Component
 
         $this->posttype->update([
             'name' => $this->name,
-            'prefix' => Str::start($this->prefix, '/'),
+            'prefix' => $this->prefix,
             'description' => $this->description,
         ]);
         session()->flash('success', 'Posttype ' . $this->name . ' was successfully updated');

@@ -20,7 +20,7 @@ class CreatePostTypeForm extends Component
     }
 
     public function submit() {
-        $this->prefix = Str::start($this->prefix, '/');
+        $this->prefix = $this->prefix;
         $this->validate([
             'name' => ['required', 'unique:post_types,name'],
             'prefix' => ['unique:post_types,prefix'],
@@ -28,7 +28,7 @@ class CreatePostTypeForm extends Component
 
         PostType::create([
             'name' => $this->name,
-            'prefix' => Str::start($this->prefix, '/'),
+            'prefix' => $this->prefix,
             'description' => $this->description
         ]);
 
