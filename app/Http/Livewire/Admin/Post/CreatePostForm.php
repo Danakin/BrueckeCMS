@@ -29,7 +29,6 @@ class CreatePostForm extends Component
             'uri' => ['required', 'unique:posts,title'],
             'excerpt' => ['required'],
             'body' => ['required'],
-            'post_type_id' => ['required', 'exists:post_types,id'],
         ]);
     }
 
@@ -43,7 +42,6 @@ class CreatePostForm extends Component
             'uri' => ['required', 'unique:posts,title'],
             'excerpt' => ['required'],
             'body' => ['required'],
-            'post_type_id' => ['required', 'exists:post_types,id'],
         ]);
 
         $post = auth()->user()->posts()->create([

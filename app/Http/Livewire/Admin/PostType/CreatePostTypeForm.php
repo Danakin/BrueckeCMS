@@ -14,16 +14,12 @@ class CreatePostTypeForm extends Component
 
     public function updated($propertyName) {
         $this->validateOnly($propertyName, [
-            'name' => ['required', 'unique:post_types,name'],
-            'prefix' => ['unique:post_types,prefix'],
         ]);
     }
 
     public function submit() {
         $this->prefix = $this->prefix;
         $this->validate([
-            'name' => ['required', 'unique:post_types,name'],
-            'prefix' => ['unique:post_types,prefix'],
         ]);
 
         PostType::create([
