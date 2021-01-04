@@ -19,10 +19,6 @@ class UserSeeder extends Seeder
     public function run()
     {
         $role_superuser = Role::where('name', 'superuser')->first();
-        $role_admin = Role::where('name', 'admin')->first();
-        $role_moderator = Role::where('name', 'moderator')->first();
-        $role_author = Role::where('name', 'author')->first();
-        $role_user = Role::where('name', 'user')->first();
 
         $superuser = User::create([
             'name' => 'danakin',
@@ -32,14 +28,5 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         $superuser->roles()->attach($role_superuser);
-
-        $admin = User::factory()->create();
-        $admin->roles()->attach($role_admin);
-        $moderator = User::factory()->create();
-        $moderator->roles()->attach($role_moderator);
-        $author = User::factory()->create();
-        $author->roles()->attach($role_author);
-        $user = User::factory()->create();
-        $user->roles()->attach($role_user);
     }
 }
