@@ -7,12 +7,16 @@
 <section class="w-full p-4 rounded bg-white my-2">
     <livewire:admin.user.edit-user-form :user="$user" />
 </section>
+@can('updatePassword', $user)
 <section class="w-full p-4 rounded bg-white my-2">
     <livewire:admin.user.edit-password-form :user="$user" />
 </section>
+@endcan
+@can('updateRoles', $user)
 <section class="w-full p-4 rounded bg-white my-2">
     <livewire:admin.user.edit-roles-form :user="$user" />
 </section>
+@endcan
 <section class="w-full p-4 rounded bg-white my-2">
     <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="flex flex-col">
         @csrf

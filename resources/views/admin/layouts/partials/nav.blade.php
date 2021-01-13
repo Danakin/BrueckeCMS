@@ -74,5 +74,11 @@
                 </li>
             </ul>
         </section>
+        <div class="flex-1"></div>
+            <form action="/logout" class="flex" method="POST">
+            @csrf
+            <button class="w-full py-2 hover:bg-gray-400">Logout</button>
+            </form>
+        </div>
     </nav>
 </div>

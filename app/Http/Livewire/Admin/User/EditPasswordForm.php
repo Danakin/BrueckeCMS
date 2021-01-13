@@ -15,18 +15,21 @@ class EditPasswordForm extends Component
     public $password;
     public $password_confirmation;
 
-    public function mount(User $user) {
+    public function mount(User $user)
+    {
         $this->user = $user;
     }
 
-    public function updated($propertyName) {
+    public function updated($propertyName)
+    {
         $this->validateOnly($propertyName, [
             'current_password' => ['required', new MatchCurrentPassword],
             'password' => ['required', 'min:8', 'confirmed'],
         ]);
     }
 
-    public function submit() {
+    public function submit()
+    {
         $validatedData = $this->validate([
             'current_password' => ['required', new MatchCurrentPassword],
             'password' => ['required', 'min:8', 'confirmed'],

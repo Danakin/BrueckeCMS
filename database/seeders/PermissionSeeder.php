@@ -23,6 +23,12 @@ class PermissionSeeder extends Seeder
 
         /* Permissions */
         Permission::create([
+            'name' => 'manage_roles',
+            'title' => 'Manage roles',
+            'description' => 'Allows this Role to create, delete or modify roles',
+        ]);
+
+        Permission::create([
             'name' => 'manage_permissions',
             'title' => 'Manage permission',
             'description' => 'Allows this Role to create, delete or modify permission',

@@ -10,8 +10,9 @@ class PostTypePolicy
 {
     use HandlesAuthorization;
 
-    public function before(User $user) {
-        if($user->hasRole('superuser')) return true;
+    public function before(User $user)
+    {
+        if ($user->hasRole('superuser')) return true;
     }
 
     /**
@@ -23,10 +24,8 @@ class PostTypePolicy
      */
     public function view(User $user, PostType $posttype)
     {
-        foreach($user->roles as $role) {
-            foreach($role->permissions as $permission) {
-                if ($permission->type->id == $posttype->id) return true;
-            }
+        foreach ($user->role->permissions as $permission) {
+            if ($permission->type && $permission->type->id == $posttype->id) return true;
         }
         return false;
     }
