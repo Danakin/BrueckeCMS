@@ -44,14 +44,14 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
-
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+            
             Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+            
             if (Schema::hasTable('post_types')) {
                 foreach (PostType::all() as $type) {
                     Route::view(Str::start($type->prefix, '/'), 'home.index', ['posts' => $type->posts()->whereNotNull('published_at')->get()])->middleware(['web']);
@@ -62,7 +62,7 @@ class RouteServiceProvider extends ServiceProvider
                 foreach (Post::whereNotNull('published_at')->get() as $post) {
                     $prefix =  Str::start($post->type->prefix, '/');
                     $uri = Str::start($post->uri, '/');
-                    Route::view($prefix . $uri, 'home.post', ['post' => $post]);
+                    Route::view($prefix . $uri, 'home.post', ['post' => $post])->middleware('web');
                 }
             }
         });
