@@ -1,3 +1,4 @@
+@if ($menu)
 <nav class="fixed top-0 left-0 right-0 h-12 bg-gray-300 text-black flex flex-row justify-between items-stretch pl-4">
     <section class="font-bold text-2xl flex items-center">
         @if ($menu->uri)
@@ -32,5 +33,6 @@
                 @endif
             </a>
             @endforeach
-    </section>
-</nav>
+        </section>
+    </nav>
+@endif
