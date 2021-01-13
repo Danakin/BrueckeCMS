@@ -23,24 +23,21 @@ class PermissionSeeder extends Seeder
 
         /* Permissions */
         Permission::create([
-            'name' => 'add_permission',
-            'title' => 'Add permission',
-            'description' => 'Allows this Role to add permission',
+            'name' => 'manage_permissions',
+            'title' => 'Manage permission',
+            'description' => 'Allows this Role to create, delete or modify permission',
         ]);
+
         Permission::create([
-            'name' => 'assign_permission',
-            'title' => 'Assign Permission',
-            'description' => 'Allows this Role to assign permission',
+            'name' => 'manage_post_types',
+            'title' => 'Manage post types',
+            'description' => 'Allows this role to create, delete or modify post types'
         ]);
+
         Permission::create([
-            'name' => 'modify_permission',
-            'title' => 'Modify Permission',
-            'description' => 'Allows this Role to modify permission',
-        ]);
-        Permission::create([
-            'name' => 'delete_permission',
-            'title' => 'Delete Permission',
-            'description' => 'Allows this Role to delete permission',
+            'name' => 'manage_comments',
+            'title' => 'Manage comments',
+            'description' => 'Allows this role to manage comments'
         ]);
 
         // TODO: ADD COMMENTS AND TAGS

@@ -16,14 +16,13 @@ class CanAccessAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->user()) {
+        if (!auth()->user()) {
             return redirect()->route('login');
         }
-        foreach(auth()->user()->roles as $role) {
-            if($role->hasPermission('access_admin')) {
-                return $next($request);
-            }
+        if (auth()->user()->role->hasPermission('access_admin')) {
+            return $next($request);
         }
+
         return abort(403);
     }
 }

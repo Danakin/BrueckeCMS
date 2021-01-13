@@ -11,15 +11,18 @@ class Role extends Model
 
     protected $fillable = ['name'];
 
-    public function users() {
-        return $this->belongsToMany(User::class);
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 
-    public function permissions() {
+    public function permissions()
+    {
         return $this->belongsToMany(Permission::class);
     }
 
-    public function hasPermission($permission) {
+    public function hasPermission($permission)
+    {
         return null !== $this->permissions->whereIn('name', $permission)->first();
     }
 }

@@ -11,7 +11,7 @@
     <livewire:admin.user.edit-password-form :user="$user" />
 </section>
 <section class="w-full p-4 rounded bg-white my-2">
-    <livewire:admin.user.edit-roles-form :user="$user" :roles="$roles" />
+    <livewire:admin.user.edit-roles-form :user="$user" />
 </section>
 <section class="w-full p-4 rounded bg-white my-2">
     <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="flex flex-col">

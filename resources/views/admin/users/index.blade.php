@@ -16,7 +16,7 @@
             <a href="{{ route('admin.users.edit', $user) }}">{{ $user->name }}</a>
         </div>
         <div class="w-full sm:w-6/12">
-            {{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}
+            {{ $user->role ? $user->role->name : '' }}
         </div>
     </article>
     @endforeach

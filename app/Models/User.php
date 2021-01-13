@@ -59,19 +59,16 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function roles() {
-        return $this->belongsToMany(Role::class);
-    }
-
-    public function hasAnyRole($roles) {
-        return null !== $this->roles()->whereIn('name', $roles)->first();
-    }
-
-    public function hasRole($role) {
-        return null !== $this->roles()->where('name', $role)->first();
-    }
-
-    public function posts() {
+    public function posts()
+    {
         return $this->hasMany(Post::class);
+    }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function hasRole($role)
+    {
+        return null !== $this->role()->where('name', $role)->first();
     }
 }
