@@ -64,4 +64,9 @@ class UserPolicy
         }
         return false;
     }
+
+    public function accessAdminPanel(User $user)
+    {
+        return Auth::user()->role->hasPermission('access_admin');
+    }
 }

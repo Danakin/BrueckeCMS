@@ -17,7 +17,7 @@ class Primary extends Component
     public function __construct()
     {
         //
-        $this->menu = Menu::where('title', 'primary')->first();
+        $this->menu = Menu::where("title", "primary")->first();
     }
 
     /**
@@ -27,6 +27,6 @@ class Primary extends Component
      */
     public function render()
     {
-        return view('components.nav.primary');
+        return view("components.nav.primary");
     }
 }

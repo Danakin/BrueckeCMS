@@ -52,13 +52,13 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            if(Schema::hasTable('post_types')) {
+            if (Schema::hasTable('post_types')) {
                 foreach (PostType::all() as $type) {
-                    Route::view(Str::start($type->prefix, '/'), 'home.index', ['posts' => $type->posts()->whereNotNull('published_at')->get()]);
+                    Route::view(Str::start($type->prefix, '/'), 'home.index', ['posts' => $type->posts()->whereNotNull('published_at')->get()])->middleware(['web']);
                 }
             }
 
-            if(Schema::hasTable('posts')) {
+            if (Schema::hasTable('posts')) {
                 foreach (Post::whereNotNull('published_at')->get() as $post) {
                     $prefix =  Str::start($post->type->prefix, '/');
                     $uri = Str::start($post->uri, '/');
