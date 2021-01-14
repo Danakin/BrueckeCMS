@@ -1,4 +1,4 @@
-<nav class="fixed top-0 left-0 right-0 h-12 bg-gray-300 text-black flex flex-row justify-between items-stretch pl-4">
+<nav class="fixed top-0 left-0 right-0 h-12 bg-gray-300 text-black flex flex-row items-stretch pl-4">
     @if ($menu)
     <section class="font-bold text-2xl flex items-center">
         @if ($menu->uri)
@@ -15,12 +15,15 @@
         {{ Str::upper($menu->title) }}
         @endif
     </section>
+    @endif
+    <div class="flex-1"></div>
+    @if ($menu)
     <section class="flex">
         @foreach($menu->items as $item)
         @if ($item->post_type_id)
-            <a class="px-4 flex items-center bg-blue-200 hover:bg-blue-400" href="{{ $item->type->prefix }}">
+            <a class="px-4 flex items-center hover:bg-blue-200" href="{{ $item->type->prefix }}">
         @else
-            <a class="px-4 flex items-center bg-blue-200 hover:bg-blue-400" href="{{ $item->uri }}">
+            <a class="px-4 flex items-center hover:bg-blue-200" href="{{ $item->uri }}">
         @endif
             @if ($item->title)
             {{ $item->title }}
@@ -36,10 +39,9 @@
         </section>
         @endif
 
-    <div class="flex-1"></div>
     @auth
         @can('accessAdminPanel', Auth::user())
-        <a class="flex px-4 items-center hover:bg-blue-200" href="{{ route('admin.index') }}">ADMIN</a>
+        <a class="flex px-4 items-center hover:bg-blue-200" href="{{ route('admin.index') }}">Admin Dashboard</a>
         @endcan
         <form action="{{ route('logout') }}" class="flex" method="POST">
             @csrf
