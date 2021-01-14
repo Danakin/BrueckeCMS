@@ -40,6 +40,10 @@ class EditPasswordForm extends Component
         $this->user->password = $hash;
         $this->user->save();
         session()->flash('success', 'Password was successfully updated');
+
+        $this->current_password = "";
+        $this->password = "";
+        $this->password_confirmation = "";
         // return redirect()->route('admin.roles.index');
     }
 
