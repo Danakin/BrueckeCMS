@@ -3,7 +3,7 @@
 <div class="min-h-screen bg-gradient-to-tr from-blue-400 to-blue-200 pt-12 px-2">
 
     <!-- Page Content -->
-    <main class="container mx-auto">
+    <main class="container mx-auto relative z-0">
         @yield('content')
     </main>
 </div>
