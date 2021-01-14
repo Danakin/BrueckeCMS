@@ -19,5 +19,7 @@ Headline
 </section>
 @endif
 
-{!! $post->body !!}
+<section class="mt-4 p-4 bg-white border-l-4 border-blue-600">
+    {!! $post->body !!}
+</section>
 @endsection

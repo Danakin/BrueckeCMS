@@ -41,7 +41,7 @@
 
     @auth
         @can('accessAdminPanel', Auth::user())
-        <a class="flex px-4 items-center hover:bg-blue-200" href="{{ route('admin.index') }}">Admin Dashboard</a>
+        <a class="flex px-4 items-center hover:bg-blue-200" href="{{ route('admin.index') }}">Admin</a>
         @endcan
         <form action="{{ route('logout') }}" class="flex" method="POST">
             @csrf
