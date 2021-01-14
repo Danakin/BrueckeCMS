@@ -10,6 +10,7 @@ class CreateMenuForm extends Component
     public $title;
     public $description;
     public $uri;
+    public $name;
 
     public function updated($propertyName) {
         $this->validateOnly($propertyName, [
@@ -28,6 +29,7 @@ class CreateMenuForm extends Component
             'title' => $this->title,
             'description' => $this->description,
             'uri' => $this->uri,
+            'name' => $this->name,
         ]);
 
         session()->flash('success', 'Menu ' . $menu->title . ' was successfully created');
