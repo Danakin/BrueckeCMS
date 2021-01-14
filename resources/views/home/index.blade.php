@@ -7,7 +7,7 @@ Headline
 @section('content')
 @foreach ($posts as $post)
 <section
-    class="container mx-auto bg-white border-l-4 border-blue-600 flex flex-col relative transform transition duration-150 hover:scale-110 my-2">
+    class="container mx-auto bg-white border-l-4 border-blue-600 flex flex-col relative transform transition duration-150 hover:scale-105 my-2">
     <a href="{{ Str::start($post->type->prefix . '/' . $post->uri, '/')}}" class="mx-2 p-4 w-full">
         <h2 class="font-bold text-2xl">
             {{ $post->title }}
