@@ -1,4 +1,4 @@
-<section class="grid grid-cols-2 relative">
+<section class="grid grid-cols-2 relative" x-data="">
     <ul>
         <li class="font-bold my-3 px-4">Available</li>
         @foreach ($posttypes as $item)
@@ -8,24 +8,37 @@
                 wire:click="addToMenu({{ $item }})"
                 animate-move
             >
-                <div>
-                    {{ $item['name'] }}
-                </div>
-                <div>➡</div>
+                {{ $item['name'] }}
             </li>
         @endforeach
     </ul>
-    <ul>
+    <ul drag-root="reorder">
         <li class="font-bold my-3 px-4">In menu</li>
         @foreach ($items as $item)
             <li
                 wire:key="{{ $item['id'] }}"
                 class="border border-gray-400 px-4 py-2 cursor-pointer rounded m-2 flex justify-between"
-                wire:click="removeFromMenu({{ $item }})"
                 animate-move
+                draggable="true"
+                drag-item="{{ $item['id'] }}"
+                wire:click="removeFromMenu({{ $item }})"
+                x-on:dragstart="$event.target.setAttribute('dragging', true)"
+                x-on:dragenter.prevent="$event.target.classList.add('bg-yellow-100')"
+                x-on:drop="
+                    const dragRoot = document.querySelector('[drag-root]')
+                    $event.target.classList.remove('bg-yellow-100')
+                    const draggingEl = dragRoot.querySelector('[dragging]')
+                    const position = draggingEl.compareDocumentPosition($event.target)
+                    if(position === 2) $event.target.before(draggingEl)
+                    if(position === 4) $event.target.after(draggingEl)
+                    const orderIds = Array.from(dragRoot.querySelectorAll('[drag-item]')).map(itemEl => Number(itemEl.getAttribute('drag-item')))
+                    $wire.updateMenuOrder(orderIds)
+                "
+                x-on:dragover.prevent
+                x-on:dragleave="$event.target.classList.remove('bg-yellow-100')"
+                x-on:dragend="$event.target.removeAttribute('dragging')"
             >
-                <div>⬅</div>
-                <div>{{ $item['title'] }}</div>
+                {{ $item['title'] }}
             </li>
         @endforeach
     </ul>

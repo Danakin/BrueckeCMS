@@ -22,7 +22,7 @@ class ChangeMenuItem extends Component
     {
         $this->menu = $menu;
         // TODO UPDATE POSTTYPE WITH name->title prefix->uri
-        $this->items = $menu->items;
+        $this->items = $menu->items->sortBy("order");
         $this->menu_ids = array_filter(
             $this->items->pluck("post_type_id")->toArray()
         );
@@ -82,6 +82,39 @@ class ChangeMenuItem extends Component
         }
 
         $menuItem->delete();
+    }
+
+    public function updateMenuOrder($newOrder)
+    {
+        $oldOrder = $this->items
+            ->map(function ($i) {
+                return $i["id"];
+            })
+            ->toArray();
+
+        $diffs = [];
+        for ($i = 0; $i < min(count($oldOrder), count($newOrder)); $i++) {
+            if ($oldOrder[$i] !== $newOrder[$i]) {
+                array_push($diffs, [
+                    "index" => $i,
+                    "id" => $newOrder[$i],
+                ]);
+            }
+        }
+
+        foreach ($diffs as $diff) {
+            $id = $diff["id"];
+            $order = $diff["index"] + 1;
+            $item = $this->items->first(function ($item) use ($id) {
+                return $item->id === $id;
+            });
+            $item->order = $order;
+            $item->save();
+        }
+
+        $this->items = $this->items->sortBy([
+            fn($a, $b) => $a["order"] <=> $b["order"],
+        ]);
     }
 
     public function render()
