@@ -72,6 +72,15 @@ class ChangeMenuItem extends Component
             fn($a, $b) => $a["name"] <=> $b["name"],
         ]);
 
+        $toUpdateMenuItems = MenuItem::where("menu_id", $item["menu_id"])
+            ->where("order", ">", $item["order"])
+            ->get();
+
+        foreach ($toUpdateMenuItems as $toUpdateMenuItem) {
+            $toUpdateMenuItem->order -= 1;
+            $toUpdateMenuItem->save();
+        }
+
         $menuItem->delete();
     }
 

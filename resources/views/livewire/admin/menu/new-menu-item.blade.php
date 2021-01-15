@@ -3,7 +3,7 @@
         @click="dialog = true">
         New Fixed Link
     </div>
-    <div class="absolute top-0 bottom-0 left-0 right-0 bg-gray-200 z-10 flex justify-center align-center"
+    <div class="absolute top-0 bottom-0 left-0 right-0 bg-white z-10 flex justify-center items-center"
         :class="{ 'hidden' : !dialog }" @click.stop="dialog = false">
         <form wire:submit.prevent="" @click.stop="" class="flex flex-col text-black p-8">
             <x-input.text name="title" model="title">Title</x-input.text>

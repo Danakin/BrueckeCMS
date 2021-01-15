@@ -29,7 +29,7 @@ class NewMenuItem extends Component
         $count = MenuItem::where("menu_id", $this->menu->id)->count();
 
         $validate = $this->validate([
-            "title" => ["required", "unique:menus,title"],
+            "title" => ["required", "unique:menu_items,title"],
             "uri" => ["required", "url"],
         ]);
 
@@ -43,6 +43,10 @@ class NewMenuItem extends Component
 
         // emit event
         $this->emit("newMenuItem", $menuItem->id);
+
+        // Reset inputs
+        $this->title = "";
+        $this->uri = "";
     }
 
     public function render()
