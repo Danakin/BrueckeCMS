@@ -30,17 +30,20 @@
     let animations = []
 
     Livewire.hook('message.received', () => {
-        let items = Array.from(document.querySelectorAll('[animate-move]'))
+        const items = Array.from(document.querySelectorAll('[animate-move]'))
         animations = items.map(item => {
-            let oldTop = item.getBoundingClientRect().top
-            let oldLeft = item.getBoundingClientRect().left
+            const oldTop = item.getBoundingClientRect().top
+            const oldLeft = item.getBoundingClientRect().left
             return () => {
-                let newTop = item.getBoundingClientRect().top
-                let newLeft = item.getBoundingClientRect().left
+                const newTop = item.getBoundingClientRect().top
+                const newLeft = item.getBoundingClientRect().left
+                
                 item.animate([
                     { transform: `translateX(${oldLeft - newLeft}px) translateY(${oldTop - newTop}px)` },
                     { transform: `translateX(0) translateY(0)` }
                 ], {duration: 100, easing: 'ease-in-out'})
+
+                return item
             }
         })
 
@@ -50,9 +53,23 @@
     })
 
     Livewire.hook('message.processed', () => {
+        const items = Array.from(document.querySelectorAll('[animate-move]'))
+        let oldKeys = []
+        
         while (animations.length) {
-            animations.shift()()
+            const item = animations.shift()()
+            oldKeys.push(Number(item.getAttribute('wire:key')))
         }
+
+        items.forEach(item => {
+            const key = Number(item.getAttribute('wire:key'))
+            if(!oldKeys.includes(key)) {
+                item.animate([
+                    { opacity: 0 },
+                    { opacity: 1 }
+                ], {duration: 500, easing: 'ease-in-out'})
+            }
+        })
     })
 </script>
 @endpush
